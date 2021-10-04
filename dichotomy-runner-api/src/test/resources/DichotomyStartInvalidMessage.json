@@ -1,0 +1,27 @@
+{
+  "data": {
+    "type": "dichotomy-request",
+    "id": "id",
+    "attributes": {
+      "network": {
+        "filename": "network.txt",
+        "url": "https://network/file/url"
+      },
+      "crac": {
+        "filename": "crac.txt",
+        "url": "https://crac/file/url"
+      },
+      "splittingFactors": {
+        "FR": 0.4,
+        "AT": 0.4,
+        "SI": 0.2,
+        "IT": -1.0
+      },
+      "parameters": {
+        "minValue": 0.0,
+        "maxValue": 1000.0,
+        "precision": 50.0
+      }
+    }
+  }
+}
