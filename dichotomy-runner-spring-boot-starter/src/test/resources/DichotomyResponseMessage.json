@@ -1,0 +1,38 @@
+{
+  "data": {
+    "type": "dichotomy-response",
+    "id": "id",
+    "attributes": {
+      "higherSecureStep": {
+        "stepValue": 1000,
+        "networkWithPra": {
+          "filename": "networkWithPra.txt",
+          "url": "https://networkWithPra/file/url"
+        },
+        "cracResult": {
+          "filename": "cracResult.txt",
+          "url": "https://cracResult/file/url"
+        },
+        "raoResult": {
+          "filename": "raoResult.txt",
+          "url": "https://raoResult/file/url"
+        }
+      },
+      "lowerUnsecureStep": {
+        "stepValue": 1500,
+        "networkWithPra": {
+          "filename": "networkWithPra.txt",
+          "url": "https://networkWithPra/file/url"
+        },
+        "cracResult": {
+          "filename": "cracResult.txt",
+          "url": "https://cracResult/file/url"
+        },
+        "raoResult": {
+          "filename": "raoResult.txt",
+          "url": "https://raoResult/file/url"
+        }
+      }
+    }
+  }
+}

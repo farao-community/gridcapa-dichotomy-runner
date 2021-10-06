@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "dichotomy-server.amqp.exchange",
+      "type": "java.lang.String",
+      "description": "AMQP exchange to be used to send dichotomy requests."
+    },
+    {
+      "name": "dichotomy-server.amqp.routing-key",
+      "type": "java.lang.String",
+      "description": "AMQP routing key to associate to dichotomy requests."
+    },
+    {
+      "name": "dichotomy-server.amqp.expiration",
+      "type": "java.lang.String",
+      "description": "Expiration time of dichotomy requests."
+    },
+    {
+      "name": "dichotomy-server.amqp.application-id",
+      "type": "java.lang.String",
+      "description": "Application ID to use for sent AMQP messages."
+    }
+  ]
+}

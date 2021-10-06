@@ -46,6 +46,7 @@
     <modules>
         <module>dichotomy-runner-api</module>
         <module>dichotomy-runner-app</module>
+        <module>dichotomy-runner-spring-boot-starter</module>
     </modules>
 
     <properties>

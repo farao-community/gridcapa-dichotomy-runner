@@ -11,7 +11,7 @@
 
     <artifactId>gridcapa-dichotomy-runner-api</artifactId>
     <name>GridCapa dichotomy runner API</name>
-    <description>Client API to dichotomy runner application</description>
+    <description>Client API to dichotomy runner</description>
     <packaging>jar</packaging>
 
     <dependencies>
