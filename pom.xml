@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.farao-community.farao</groupId>
+        <artifactId>farao-parent-ws</artifactId>
+        <version>1.0.10</version>
+    </parent>
+
+    <artifactId>gridcapa-dichotomy-runner</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>GridCapa dichotomy runner</name>
+    <description>Generic dichotomy application environment in GridCapa suite</description>
+    <scm>
+        <connection>scm:git:https://github.com/farao-community/gridcapa-dichotomy-runner.git</connection>
+        <developerConnection>scm:git:https://github.com/farao-community/gridcapa-dichotomy-runner.git</developerConnection>
+        <url>https://github.com/farao-community/gridcapa-dichotomy-runner.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Sebastien MURGEY</name>
+            <email>sebastien.murgey@rte-france.com</email>
+            <organization>RTE</organization>
+            <organizationUrl>http://www.rte-france.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Theo Pascoli</name>
+            <email>theo.pascoli@rte-france.com</email>
+            <organization>RTE</organization>
+            <organizationUrl>http://www.rte-france.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Joris Mancini</name>
+            <email>joris.mancini@rte-france.com</email>
+            <organization>RTE</organization>
+            <organizationUrl>http://www.rte-france.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>dichotomy-runner-api</module>
+        <module>dichotomy-runner-app</module>
+        <module>dichotomy-runner-spring-boot-starter</module>
+    </modules>
+
+    <properties>
+        <commons.lang.version>3.11</commons.lang.version>
+        <commons.io.version>2.5</commons.io.version>
+        <jsonapi.converter.version>0.10</jsonapi.converter.version>
+
+        <!-- Business dependencies -->
+        <farao.dichotomy.version>3.0.0</farao.dichotomy.version>
+        <rao.runner.starter.version>0.1.1</rao.runner.starter.version>
+        <farao.bom.version>1.0.10</farao.bom.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.farao-community.farao</groupId>
+                <artifactId>farao-dichotomy-com.farao_community.farao.dichotomy_runner.api</artifactId>
+                <version>${farao.dichotomy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.farao-community.farao</groupId>
+                <artifactId>farao-network-dichotomy</artifactId>
+                <version>${farao.dichotomy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.farao-community.farao</groupId>
+                <artifactId>gridcapa-rao-runner-spring-boot-starter</artifactId>
+                <version>${rao.runner.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jasminb</groupId>
+                <artifactId>jsonapi-converter</artifactId>
+                <version>${jsonapi.converter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.farao-community.farao</groupId>
+                <artifactId>farao-bom</artifactId>
+                <version>${farao.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

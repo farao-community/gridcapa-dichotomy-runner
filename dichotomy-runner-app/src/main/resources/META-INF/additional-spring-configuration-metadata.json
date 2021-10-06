@@ -1,0 +1,49 @@
+{
+  "properties": [
+    {
+      "name": "dichotomy-server.requests.queue-name",
+      "type": "java.lang.String",
+      "description": "Dichotomy requests queue name for the application."
+    },
+    {
+      "name": "dichotomy-server.response.exchange",
+      "type": "java.lang.String",
+      "description": "AMQP exchange to be used to send dichotomy response to if no reply-to queue is provided in request header."
+    },
+    {
+      "name": "dichotomy-server.response.expiration",
+      "type": "java.lang.String",
+      "description": "Expiration time to dichotomy response."
+    },
+    {
+      "name": "dichotomy-server.minio.url",
+      "type": "java.lang.String",
+      "description": "URL of MinIO file storage."
+    },
+    {
+      "name": "dichotomy-server.minio.bucket",
+      "type": "java.lang.String",
+      "description": "Bucket to use in MinIO file storage."
+    },
+    {
+      "name": "dichotomy-server.minio.base-path",
+      "type": "java.lang.String",
+      "description": "Base-path to apply in MinIO file storage."
+    },
+    {
+      "name": "dichotomy-server.minio.access.name",
+      "type": "java.lang.String",
+      "description": "Access name for MinIO connection."
+    },
+    {
+      "name": "dichotomy-server.minio.access.secret",
+      "type": "java.lang.String",
+      "description": "Access secret for MinIO connection."
+    },
+    {
+      "name": "dichotomy-server.security.whitelist",
+      "type": "java.lang.String",
+      "description": "URL whitelist for the application."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "data": {
+    "type": "dichotomy-request",
+    "id": "id",
+    "attributes": {
+      "network": {
+        "filename": "network.txt",
+        "url": "https://network/file/url"
+      },
+      "crac": {
+        "filename": "crac.txt",
+        "url": "https://crac/file/url"
+      },
+      "glsk": {
+        "filename": "glsk.txt",
+        "url": "https://glsk/file/url"
+      },
+      "raoParameters": {
+        "filename": "raoParameters.json",
+        "url": "https://rao-parameters/file/url"
+      },
+      "parameters": {
+        "minValue": 0.0,
+        "maxValue": 1000.0,
+        "precision": 50.0,
+        "shiftDispatcherConfiguration" : {
+          "type": "SplittingFactors",
+          "splittingFactors": {
+            "FR": 0.4,
+            "AT": 0.4,
+            "SI": 0.2,
+            "IT": -1.0
+          }
+        }
+      }
+    }
+  }
+}

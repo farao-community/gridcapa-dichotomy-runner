@@ -1,0 +1,51 @@
+{
+  "data": {
+    "type": "dichotomy-request",
+    "id": "id",
+    "attributes": {
+      "network": {
+        "filename": "network.txt",
+        "url": "https://network/file/url"
+      },
+      "crac": {
+        "filename": "crac.txt",
+        "url": "https://crac/file/url"
+      },
+      "glsk": {
+        "filename": "glsk.txt",
+        "url": "https://glsk/file/url"
+      },
+      "raoParameters": {
+        "filename": "raoParameters.json",
+        "url": "https://rao-parameters/file/url"
+      },
+      "parameters": {
+        "minValue": 0.0,
+        "maxValue": 1000.0,
+        "precision": 50.0,
+        "shiftDispatcherConfiguration" : {
+          "type": "CseIdcc",
+          "splittingFactors": {
+            "10YFR-RTE------C": 0.4,
+            "10YCH-SWISSGRIDZ": 0.1,
+            "10YAT-APG------L": 0.3,
+            "10YSI-ELES-----O": 0.2,
+            "10YIT-GRTN-----B": -1.0
+          },
+          "referenceExchanges": {
+            "10YFR-RTE------C": 2000,
+            "10YCH-SWISSGRIDZ": 4000,
+            "10YAT-APG------L": 2590,
+            "10YSI-ELES-----O": 3780
+          },
+          "ntcs2": {
+            "10YFR-RTE------C": 3000,
+            "10YCH-SWISSGRIDZ": 5000,
+            "10YAT-APG------L": 3590,
+            "10YSI-ELES-----O": 4780
+          }
+        }
+      }
+    }
+  }
+}

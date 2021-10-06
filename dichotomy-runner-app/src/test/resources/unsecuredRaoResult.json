@@ -1,0 +1,15 @@
+{
+  "computationStatus" : "default",
+  "costResults" : {
+    "initial" : {
+      "functionalCost" : 50
+    },
+    "afterPRA" : {
+      "functionalCost" : 10
+    },
+    "afterCRA" : {
+      "functionalCost" : 5
+    }
+  },
+  "flowCnecResults" : []
+}
