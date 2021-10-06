@@ -56,7 +56,7 @@
 
         <!-- Business dependencies -->
         <farao.dichotomy.version>3.0.0</farao.dichotomy.version>
-        <rao.runner.starter.version>0.2.0-SNAPSHOT</rao.runner.starter.version>
+        <rao.runner.starter.version>0.1.1</rao.runner.starter.version>
         <farao.bom.version>1.0.10</farao.bom.version>
     </properties>
 
