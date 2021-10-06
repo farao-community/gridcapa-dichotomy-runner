@@ -25,6 +25,7 @@ public class DichotomyRequest {
     private final DichotomyFileResource network;
     private final DichotomyFileResource crac;
     private final DichotomyFileResource glsk;
+    private final DichotomyFileResource raoParameters;
     private final DichotomyParameters parameters;
 
     @JsonCreator
@@ -32,11 +33,13 @@ public class DichotomyRequest {
                             @JsonProperty("network") DichotomyFileResource network,
                             @JsonProperty("crac") DichotomyFileResource crac,
                             @JsonProperty("glsk") DichotomyFileResource glsk,
+                            @JsonProperty("raoParameters") DichotomyFileResource raoParameters,
                             @JsonProperty("parameters") DichotomyParameters parameters) {
         this.id = id;
         this.network = Objects.requireNonNull(network);
         this.crac = Objects.requireNonNull(crac);
         this.glsk = Objects.requireNonNull(glsk);
+        this.raoParameters = Objects.requireNonNull(raoParameters);
         this.parameters = Objects.requireNonNull(parameters);
     }
 
@@ -54,6 +57,10 @@ public class DichotomyRequest {
 
     public DichotomyFileResource getGlsk() {
         return glsk;
+    }
+
+    public DichotomyFileResource getRaoParameters() {
+        return raoParameters;
     }
 
     public DichotomyParameters getParameters() {

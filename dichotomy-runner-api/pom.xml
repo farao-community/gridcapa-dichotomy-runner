@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>gridcapa-dichotomy-runner-com.farao_community.farao.dichotomy_runner.api</artifactId>
+    <artifactId>gridcapa-dichotomy-runner-api</artifactId>
     <name>GridCapa dichotomy runner API</name>
     <description>Client API to dichotomy runner application</description>
     <packaging>jar</packaging>

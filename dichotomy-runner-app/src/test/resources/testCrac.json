@@ -1,0 +1,10 @@
+{
+  "type" : "simple-crac",
+  "id" : "Dichotomy test crac",
+  "name" : "Dichotomy test crac",
+  "networkElementsNamePerId" : { },
+  "contingencies" : [ ],
+  "flowCnecs" : [ ],
+  "pstRangeActions" : [ ],
+  "networkActions" : [ ]
+}

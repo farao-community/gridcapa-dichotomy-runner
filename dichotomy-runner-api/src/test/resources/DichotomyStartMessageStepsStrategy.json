@@ -15,7 +15,10 @@
         "filename": "glsk.txt",
         "url": "https://glsk/file/url"
       },
-
+      "raoParameters": {
+        "filename": "raoParameters.json",
+        "url": "https://rao-parameters/file/url"
+      },
       "parameters": {
         "minValue": 0.0,
         "maxValue": 1000.0,

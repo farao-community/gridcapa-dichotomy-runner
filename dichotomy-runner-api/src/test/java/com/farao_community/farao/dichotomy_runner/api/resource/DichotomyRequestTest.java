@@ -24,13 +24,14 @@ class DichotomyRequestTest {
         DichotomyFileResource network = new DichotomyFileResource("network.txt", "http://path/to/network/file");
         DichotomyFileResource crac = new DichotomyFileResource("crac.txt", "http://path/to/crac/file");
         DichotomyFileResource glsk = new DichotomyFileResource("glsk.txt", "http://path/to/glsk/file");
+        DichotomyFileResource raoParameters = new DichotomyFileResource("raoParameters.json", "http://path/to/rao-parameters/file");
         Map<String, Double> splittingFactors = new TreeMap<>();
         splittingFactors.put("FR", 0.4);
         splittingFactors.put("AT", 0.4);
         splittingFactors.put("SI", 0.2);
         splittingFactors.put("IT", -1.);
         DichotomyParameters parameters = new DichotomyParameters(0., 1000., 50., new SplittingFactorsConfiguration(splittingFactors));
-        DichotomyRequest dichotomyRequest = new DichotomyRequest("id", network, crac, glsk, parameters);
+        DichotomyRequest dichotomyRequest = new DichotomyRequest("id", network, crac, glsk, raoParameters, parameters);
         assertNotNull(dichotomyRequest);
         assertEquals("id", dichotomyRequest.getId());
         assertTrue(dichotomyRequest.getParameters().getShiftDispatcherConfiguration() instanceof SplittingFactorsConfiguration);

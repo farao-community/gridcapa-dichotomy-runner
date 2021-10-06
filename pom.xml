@@ -45,6 +45,7 @@
 
     <modules>
         <module>dichotomy-runner-api</module>
+        <module>dichotomy-runner-app</module>
     </modules>
 
     <properties>
@@ -54,7 +55,8 @@
 
         <!-- Business dependencies -->
         <farao.dichotomy.version>3.0.0</farao.dichotomy.version>
-        <rao.runner.starter.version>0.1.0</rao.runner.starter.version>
+        <rao.runner.starter.version>0.2.0-SNAPSHOT</rao.runner.starter.version>
+        <farao.bom.version>1.0.10</farao.bom.version>
     </properties>
 
     <dependencyManagement>
@@ -88,6 +90,14 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.farao-community.farao</groupId>
+                <artifactId>farao-bom</artifactId>
+                <version>${farao.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

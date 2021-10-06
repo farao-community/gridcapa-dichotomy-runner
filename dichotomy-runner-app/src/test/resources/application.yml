@@ -1,0 +1,27 @@
+spring:
+  rabbitmq:
+    host: localhost-test
+    port: 1234
+    username: guest-test
+    password: guest-test
+
+rao-runner-server:
+  amqp:
+    queue-name: rao-runner
+
+dichotomy-server:
+  requests:
+    queue-name: dichotomy-test
+  responses:
+    exchange: dichotomy-response-test
+    expiration: 60000
+  minio:
+    access:
+      name: minioadmin-test
+      secret: minioadmin-test
+    url: http://localhost-test:9000
+    bucket: cep-validation-test
+    base-path: dichotomy-test/
+  security:
+    whitelist:
+      - file:/
