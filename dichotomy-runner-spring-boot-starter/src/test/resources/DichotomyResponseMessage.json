@@ -3,7 +3,7 @@
     "type": "dichotomy-response",
     "id": "id",
     "attributes": {
-      "higherSecureStep": {
+      "highestValidStep": {
         "stepValue": 1000,
         "networkWithPra": {
           "filename": "networkWithPra.txt",
@@ -18,7 +18,7 @@
           "url": "https://raoResult/file/url"
         }
       },
-      "lowerUnsecureStep": {
+      "lowestInvalidStep": {
         "stepValue": 1500,
         "networkWithPra": {
           "filename": "networkWithPra.txt",

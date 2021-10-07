@@ -85,8 +85,8 @@ class DichotomyHandlerTest {
 
         DichotomyResponse response = dichotomyHandler.handleDichotomyRequest(dichotomyRequest);
 
-        assertNotNull(response.getHigherSecureStep());
-        assertNull(response.getLowerUnsecureStep());
+        assertNotNull(response.getHighestValidStep());
+        assertNull(response.getLowestInvalidStep());
     }
 
     @Test
@@ -118,8 +118,8 @@ class DichotomyHandlerTest {
 
         DichotomyResponse response = dichotomyHandler.handleDichotomyRequest(dichotomyRequest);
 
-        assertNull(response.getHigherSecureStep());
-        assertNotNull(response.getLowerUnsecureStep());
+        assertNull(response.getHighestValidStep());
+        assertNotNull(response.getLowestInvalidStep());
     }
 
     @Test
@@ -153,10 +153,10 @@ class DichotomyHandlerTest {
 
         DichotomyResponse response = dichotomyHandler.handleDichotomyRequest(dichotomyRequest);
 
-        assertNotNull(response.getHigherSecureStep());
-        assertNotNull(response.getLowerUnsecureStep());
-        assertEquals(-1000., response.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals(0., response.getLowerUnsecureStep().getStepValue(), EPSILON);
+        assertNotNull(response.getHighestValidStep());
+        assertNotNull(response.getLowestInvalidStep());
+        assertEquals(-1000., response.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals(0., response.getLowestInvalidStep().getStepValue(), EPSILON);
     }
 
     @Test
@@ -190,10 +190,10 @@ class DichotomyHandlerTest {
 
         DichotomyResponse response = dichotomyHandler.handleDichotomyRequest(dichotomyRequest);
 
-        assertNotNull(response.getHigherSecureStep());
-        assertNotNull(response.getLowerUnsecureStep());
-        assertEquals(-1000., response.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals(-750., response.getLowerUnsecureStep().getStepValue(), EPSILON);
+        assertNotNull(response.getHighestValidStep());
+        assertNotNull(response.getLowestInvalidStep());
+        assertEquals(-1000., response.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals(-750., response.getLowestInvalidStep().getStepValue(), EPSILON);
     }
 
     @Test
@@ -238,10 +238,10 @@ class DichotomyHandlerTest {
 
         DichotomyResponse response = dichotomyHandler.handleDichotomyRequest(dichotomyRequest);
 
-        assertNotNull(response.getHigherSecureStep());
-        assertNotNull(response.getLowerUnsecureStep());
-        assertEquals(-1000., response.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals(-750., response.getLowerUnsecureStep().getStepValue(), EPSILON);
+        assertNotNull(response.getHighestValidStep());
+        assertNotNull(response.getLowestInvalidStep());
+        assertEquals(-1000., response.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals(-750., response.getLowestInvalidStep().getStepValue(), EPSILON);
     }
 
     @Test

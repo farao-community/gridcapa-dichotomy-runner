@@ -6,7 +6,6 @@
  */
 package com.farao_community.farao.dichotomy_runner.api.resource;
 
-import com.farao_community.farao.dichotomy.network.ReasonUnsecure;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.jasminb.jsonapi.annotations.Id;
@@ -20,53 +19,61 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class DichotomyResponse {
     @Id
     private final String id;
-    private final DichotomyStepResponse higherSecureStep;
-    private final DichotomyStepResponse lowerUnsecureStep;
-    private final ReasonUnsecure reasonUnsecure;
-    private final String extraInformations;
+    private final DichotomyStepResponse highestValidStep;
+    private final DichotomyStepResponse lowestInvalidStep;
+    private final LimitingCause limitingCause;
+    private final String limitingFailureMessage;
 
     @JsonCreator
     public DichotomyResponse(@JsonProperty("id") String id,
-                             @JsonProperty("higherSecureStep") DichotomyStepResponse higherSecureStep,
-                             @JsonProperty("lowerUnsecureStep") DichotomyStepResponse lowerUnsecureStep,
-                             @JsonProperty("reasonUnsecure") ReasonUnsecure reasonUnsecure,
-                             @JsonProperty("extraInformations") String extraInformations) {
+                             @JsonProperty("highestValidStep") DichotomyStepResponse highestValidStep,
+                             @JsonProperty("lowestInvalidStep") DichotomyStepResponse lowestInvalidStep,
+                             @JsonProperty("limitingCause") LimitingCause limitingCause,
+                             @JsonProperty("limitingFailureMessage") String limitingFailureMessage) {
         this.id = id;
-        this.higherSecureStep = higherSecureStep;
-        this.lowerUnsecureStep = lowerUnsecureStep;
-        this.reasonUnsecure = reasonUnsecure;
-        this.extraInformations = extraInformations;
+        this.highestValidStep = highestValidStep;
+        this.lowestInvalidStep = lowestInvalidStep;
+        this.limitingCause = limitingCause;
+        this.limitingFailureMessage = limitingFailureMessage;
     }
 
     public DichotomyResponse(String id,
-                             DichotomyStepResponse higherSecureStep,
-                             DichotomyStepResponse lowerUnsecureStep,
-                             ReasonUnsecure reasonUnsecure) {
+                             DichotomyStepResponse highestValidStep,
+                             DichotomyStepResponse lowerInvalidStep,
+                             LimitingCause limitingCause) {
         this.id = id;
-        this.higherSecureStep = higherSecureStep;
-        this.lowerUnsecureStep = lowerUnsecureStep;
-        this.reasonUnsecure = reasonUnsecure;
-        this.extraInformations = "none";
+        this.highestValidStep = highestValidStep;
+        this.lowestInvalidStep = lowerInvalidStep;
+        this.limitingCause = limitingCause;
+        this.limitingFailureMessage = "None";
     }
 
     public String getId() {
         return id;
     }
 
-    public DichotomyStepResponse getHigherSecureStep() {
-        return higherSecureStep;
+    public DichotomyStepResponse getHighestValidStep() {
+        return highestValidStep;
     }
 
-    public DichotomyStepResponse getLowerUnsecureStep() {
-        return lowerUnsecureStep;
+    public DichotomyStepResponse getLowestInvalidStep() {
+        return lowestInvalidStep;
     }
 
-    public ReasonUnsecure getReasonUnsecure() {
-        return reasonUnsecure;
+    public LimitingCause getLimitingCause() {
+        return limitingCause;
     }
 
-    public String getExtraInformations() {
-        return extraInformations;
+    public String getLimitingFailureMessage() {
+        return limitingFailureMessage;
+    }
+
+    public boolean hasValidStep() {
+        return highestValidStep != null;
+    }
+
+    public double getHighestValidStepValue() {
+        return highestValidStep != null ? highestValidStep.getStepValue() : Double.NaN;
     }
 
     @Override

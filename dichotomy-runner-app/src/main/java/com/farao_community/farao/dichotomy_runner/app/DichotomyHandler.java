@@ -22,8 +22,6 @@ import com.farao_community.farao.rao_runner.starter.RaoRunnerClient;
 import com.powsybl.action.util.Scalable;
 import com.powsybl.iidm.import_.Importers;
 import com.powsybl.iidm.network.Network;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -34,7 +32,6 @@ import java.io.InputStream;
  */
 @Component
 public class DichotomyHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DichotomyHandler.class);
     private final MinioAdapter minioAdapter;
     private final RaoRunnerClient raoRunnerClient;
     private final UrlValidationService urlValidationService;
@@ -51,13 +48,8 @@ public class DichotomyHandler {
                 index,
                 buildIndexStrategy(request.getParameters().getIndexStrategyConfiguration()),
                 buildValidationStrategy(request));
-        try {
-            engine.run();
-        } catch (ValidationException e) {
-            LOGGER.error("Dichotomy has stopped because of en error during validation : {}", e.getMessage(), e);
-            return DichotomyResponseBuilder.fromValidationException(request, index, e);
-        }
-        return DichotomyResponseBuilder.buildDichotomyResponse(request, index);
+        engine.run();
+        return DichotomyResponseBuilder.buildFromIndex(request, index);
     }
 
     private static Index<NetworkValidationResultWrapper<RaoRunnerResult>> buildIndex(DichotomyParameters parameters) {

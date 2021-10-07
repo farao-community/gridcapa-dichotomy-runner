@@ -55,7 +55,7 @@
         <jsonapi.converter.version>0.10</jsonapi.converter.version>
 
         <!-- Business dependencies -->
-        <farao.dichotomy.version>3.0.0</farao.dichotomy.version>
+        <farao.dichotomy.version>3.1.1</farao.dichotomy.version>
         <rao.runner.starter.version>0.1.1</rao.runner.starter.version>
         <farao.bom.version>1.0.10</farao.bom.version>
     </properties>

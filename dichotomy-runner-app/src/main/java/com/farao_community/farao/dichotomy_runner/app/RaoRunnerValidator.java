@@ -59,7 +59,7 @@ public class RaoRunnerValidator implements NetworkValidator<RaoRunnerResult> {
             LOGGER.info("RAO response received: {}", raoResponse);
             return new RaoRunnerResult(raoResponse, urlValidationService);
         } catch (RuntimeException e) {
-            throw new NetworkValidationException("RAO run failed", e);
+            throw new NetworkValidationException("RAO run failed. Nested exception: " + e.getMessage());
         }
     }
 
@@ -77,7 +77,7 @@ public class RaoRunnerValidator implements NetworkValidator<RaoRunnerResult> {
             minioAdapter.putFile(IOUtils.toByteArray(memDataSource.newInputStream("", "xiidm")), networkFilePath);
             return minioAdapter.generateFileResource(networkFilePath);
         } catch (IOException e) {
-            throw new NetworkValidationException("Could not save scaled network for value", e);
+            throw new NetworkValidationException("Could not save scaled network for value. Nested exception: " + e.getMessage());
         }
     }
 

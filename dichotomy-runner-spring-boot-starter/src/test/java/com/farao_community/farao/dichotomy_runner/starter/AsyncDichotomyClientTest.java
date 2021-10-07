@@ -36,8 +36,8 @@ class AsyncDichotomyClientTest {
 
         DichotomyResponse dichotomyResponse = client.runDichotomy(dichotomyRequest).join();
 
-        assertEquals(1000., dichotomyResponse.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals(1500., dichotomyResponse.getLowerUnsecureStep().getStepValue(), EPSILON);
+        assertEquals(1000., dichotomyResponse.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals(1500., dichotomyResponse.getLowestInvalidStep().getStepValue(), EPSILON);
     }
 
     private DichotomyClientProperties buildProperties() {
