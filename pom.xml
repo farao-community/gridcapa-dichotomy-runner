@@ -55,18 +55,13 @@
         <jsonapi.converter.version>0.10</jsonapi.converter.version>
 
         <!-- Business dependencies -->
-        <farao.dichotomy.version>3.1.1</farao.dichotomy.version>
-        <rao.runner.starter.version>0.1.1</rao.runner.starter.version>
+        <farao.dichotomy.version>3.1.2</farao.dichotomy.version>
+        <gridcapa.rao.runner.starter.version>0.1.1</gridcapa.rao.runner.starter.version>
         <farao.bom.version>1.0.10</farao.bom.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.farao-community.farao</groupId>
-                <artifactId>farao-dichotomy-com.farao_community.farao.dichotomy_runner.api</artifactId>
-                <version>${farao.dichotomy.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.farao-community.farao</groupId>
                 <artifactId>farao-network-dichotomy</artifactId>
@@ -75,7 +70,7 @@
             <dependency>
                 <groupId>com.farao-community.farao</groupId>
                 <artifactId>gridcapa-rao-runner-spring-boot-starter</artifactId>
-                <version>${rao.runner.starter.version}</version>
+                <version>${gridcapa.rao.runner.starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.jasminb</groupId>
