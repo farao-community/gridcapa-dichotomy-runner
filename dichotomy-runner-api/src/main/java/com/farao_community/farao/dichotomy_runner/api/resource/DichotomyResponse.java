@@ -7,6 +7,7 @@
 package com.farao_community.farao.dichotomy_runner.api.resource;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.jasminb.jsonapi.annotations.Id;
 import com.github.jasminb.jsonapi.annotations.Type;
@@ -68,10 +69,12 @@ public class DichotomyResponse {
         return limitingFailureMessage;
     }
 
+    @JsonIgnore
     public boolean hasValidStep() {
         return highestValidStep != null;
     }
 
+    @JsonIgnore
     public double getHighestValidStepValue() {
         return highestValidStep != null ? highestValidStep.getStepValue() : Double.NaN;
     }
