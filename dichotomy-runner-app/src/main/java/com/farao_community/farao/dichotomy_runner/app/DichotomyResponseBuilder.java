@@ -7,20 +7,15 @@
 package com.farao_community.farao.dichotomy_runner.app;
 
 import com.farao_community.farao.dichotomy.api.Index;
-import com.farao_community.farao.dichotomy.api.ValidationException;
 import com.farao_community.farao.dichotomy.network.NetworkValidationResultWrapper;
-import com.farao_community.farao.dichotomy.network.ReasonUnsecure;
+import com.farao_community.farao.dichotomy.network.ReasonInvalid;
 import com.farao_community.farao.dichotomy_runner.api.exception.DichotomyInternalException;
-import com.farao_community.farao.dichotomy_runner.api.resource.DichotomyFileResource;
-import com.farao_community.farao.dichotomy_runner.api.resource.DichotomyRequest;
-import com.farao_community.farao.dichotomy_runner.api.resource.DichotomyResponse;
-import com.farao_community.farao.dichotomy_runner.api.resource.DichotomyStepResponse;
+import com.farao_community.farao.dichotomy_runner.api.resource.*;
 import com.farao_community.farao.rao_runner.api.resource.RaoResponse;
 import org.apache.commons.io.FilenameUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional;
 
 /**
  * @author Joris Mancini {@literal <joris.mancini at rte-france.com>}
@@ -31,37 +26,35 @@ public final class DichotomyResponseBuilder {
         // Should not be instantiated
     }
 
-    public static DichotomyResponse buildDichotomyResponse(DichotomyRequest request, Index<NetworkValidationResultWrapper<RaoRunnerResult>> index) {
-        return new DichotomyResponse(
-                request.getId(),
-                buildDichotomyStepResponse(index.higherSecureStep()),
-                buildDichotomyStepResponse(index.lowerUnsecureStep()),
-                buildReasonUnsecureForResponse(index.lowerUnsecureStep()));
-    }
+    public static DichotomyResponse buildFromIndex(DichotomyRequest request, Index<NetworkValidationResultWrapper<RaoRunnerResult>> index) {
+        // If one the steps are null it means that it stops due to index evaluation otherwise it could have continued.
+        // If both are present, it is the expected case we just have to differentiate if the invalid step failed or if
+        // it is just unsecure.
+        LimitingCause limitingCause = LimitingCause.INDEX_EVALUATION_OR_MAX_ITERATION;
+        String failureMessage = "None";
+        if (index.lowestInvalidStep() != null && index.highestValidStep() != null) {
+            if (index.lowestInvalidStep().isFailed()) {
+                limitingCause = index.lowestInvalidStep().getReasonInvalid() == ReasonInvalid.GLSK_LIMITATION ?
+                        LimitingCause.GLSK_LIMITATION : LimitingCause.COMPUTATION_FAILURE;
+                failureMessage = index.lowestInvalidStep().getFailureMessage();
+            } else {
+                limitingCause = LimitingCause.CRITICAL_BRANCH;
+            }
+        }
 
-    public static DichotomyResponse fromValidationException(DichotomyRequest request,
-                                                            Index<NetworkValidationResultWrapper<RaoRunnerResult>> index,
-                                                            ValidationException e) {
-        return new DichotomyResponse(
-                request.getId(),
-                buildDichotomyStepResponse(index.higherSecureStep()),
-                buildDichotomyStepResponse(index.lowerUnsecureStep()),
-                buildReasonUnsecureForResponse(index.lowerUnsecureStep()),
-                e.getMessage());
-    }
-
-    private static ReasonUnsecure buildReasonUnsecureForResponse(NetworkValidationResultWrapper<?> lowerUnsecureStep) {
-        return Optional.ofNullable(lowerUnsecureStep)
-                .map(NetworkValidationResultWrapper::getReasonUnsecure)
-                .orElse(null);
+        DichotomyStepResponse highestValidStepResponse = buildDichotomyStepResponse(index.highestValidStep());
+        DichotomyStepResponse lowestInvalidStepResponse = buildDichotomyStepResponse(index.lowestInvalidStep());
+        return new DichotomyResponse(request.getId(), highestValidStepResponse, lowestInvalidStepResponse, limitingCause, failureMessage);
     }
 
     private static DichotomyStepResponse buildDichotomyStepResponse(NetworkValidationResultWrapper<RaoRunnerResult> stepResult) {
-        return Optional.ofNullable(stepResult)
-                .flatMap(NetworkValidationResultWrapper::getNetworkValidationResult)
+        if (stepResult == null) {
+            return null;
+        }
+        return stepResult.getNetworkValidationResult()
                 .map(RaoRunnerResult::getRaoResponse)
                 .map(raoResponse -> stepResponseFromRaoResponse(stepResult.stepValue(), raoResponse))
-                .orElse(null);
+                .orElseGet(() -> stepResponseFromFailure(stepResult.stepValue()));
     }
 
     private static DichotomyStepResponse stepResponseFromRaoResponse(double stepValue, RaoResponse raoResponse) {
@@ -72,10 +65,11 @@ public final class DichotomyResponseBuilder {
                 convertToDichotomyFileResource(raoResponse.getRaoResultFileUrl()));
     }
 
+    private static DichotomyStepResponse stepResponseFromFailure(double stepValue) {
+        return new DichotomyStepResponse(stepValue, null, null, null);
+    }
+
     private static DichotomyFileResource convertToDichotomyFileResource(String urlString) {
-        if (urlString == null) {
-            return null;
-        }
         try {
             URL url = new URL(urlString);
             return new DichotomyFileResource(FilenameUtils.getName(url.getPath()), urlString);

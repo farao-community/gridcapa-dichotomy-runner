@@ -27,20 +27,20 @@ class DichotomyResponseTest {
         DichotomyResponse dichotomyResponse = new DichotomyResponse("id", higherSecureStep, lowerUnsecureStep, null, null);
         assertNotNull(dichotomyResponse);
         assertEquals("id", dichotomyResponse.getId());
-        assertEquals(200., dichotomyResponse.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals("networkWithPra.txt", dichotomyResponse.getHigherSecureStep().getNetworkWithPra().getFilename());
-        assertEquals("http://path/to/network-with-pra/file", dichotomyResponse.getHigherSecureStep().getNetworkWithPra().getUrl());
-        assertEquals("cracResult.txt", dichotomyResponse.getHigherSecureStep().getCracResult().getFilename());
-        assertEquals("http://path/to/crac-result/file", dichotomyResponse.getHigherSecureStep().getCracResult().getUrl());
-        assertEquals("raoResult.txt", dichotomyResponse.getHigherSecureStep().getRaoResult().getFilename());
-        assertEquals("http://path/to/rao-result/file", dichotomyResponse.getHigherSecureStep().getRaoResult().getUrl());
-        assertEquals(250., dichotomyResponse.getLowerUnsecureStep().getStepValue(), EPSILON);
-        assertEquals("networkWithPra.txt", dichotomyResponse.getLowerUnsecureStep().getNetworkWithPra().getFilename());
-        assertEquals("http://path/to/network-with-pra/file", dichotomyResponse.getLowerUnsecureStep().getNetworkWithPra().getUrl());
-        assertEquals("cracResult.txt", dichotomyResponse.getLowerUnsecureStep().getCracResult().getFilename());
-        assertEquals("http://path/to/crac-result/file", dichotomyResponse.getLowerUnsecureStep().getCracResult().getUrl());
-        assertEquals("raoResult.txt", dichotomyResponse.getLowerUnsecureStep().getRaoResult().getFilename());
-        assertEquals("http://path/to/rao-result/file", dichotomyResponse.getLowerUnsecureStep().getRaoResult().getUrl());
+        assertEquals(200., dichotomyResponse.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals("networkWithPra.txt", dichotomyResponse.getHighestValidStep().getNetworkWithPra().getFilename());
+        assertEquals("http://path/to/network-with-pra/file", dichotomyResponse.getHighestValidStep().getNetworkWithPra().getUrl());
+        assertEquals("cracResult.txt", dichotomyResponse.getHighestValidStep().getCracResult().getFilename());
+        assertEquals("http://path/to/crac-result/file", dichotomyResponse.getHighestValidStep().getCracResult().getUrl());
+        assertEquals("raoResult.txt", dichotomyResponse.getHighestValidStep().getRaoResult().getFilename());
+        assertEquals("http://path/to/rao-result/file", dichotomyResponse.getHighestValidStep().getRaoResult().getUrl());
+        assertEquals(250., dichotomyResponse.getLowestInvalidStep().getStepValue(), EPSILON);
+        assertEquals("networkWithPra.txt", dichotomyResponse.getLowestInvalidStep().getNetworkWithPra().getFilename());
+        assertEquals("http://path/to/network-with-pra/file", dichotomyResponse.getLowestInvalidStep().getNetworkWithPra().getUrl());
+        assertEquals("cracResult.txt", dichotomyResponse.getLowestInvalidStep().getCracResult().getFilename());
+        assertEquals("http://path/to/crac-result/file", dichotomyResponse.getLowestInvalidStep().getCracResult().getUrl());
+        assertEquals("raoResult.txt", dichotomyResponse.getLowestInvalidStep().getRaoResult().getFilename());
+        assertEquals("http://path/to/rao-result/file", dichotomyResponse.getLowestInvalidStep().getRaoResult().getUrl());
     }
 
 }

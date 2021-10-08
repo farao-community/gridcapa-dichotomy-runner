@@ -1,4 +1,4 @@
-FROM openjdk:18-ea-11-jdk-alpine3.13
+FROM farao/farao-computation-base:1.2.0
 
 ARG JAR_FILE=dichotomy-runner-app/target/*.jar
 COPY ${JAR_FILE} app.jar

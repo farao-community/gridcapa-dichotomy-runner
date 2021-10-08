@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.StringJoiner;
 
 /**
  * @author Sebastien Murgey {@literal <sebastien.murgey at rte-france.com>}
@@ -27,7 +28,9 @@ public class UrlValidationService {
 
     public InputStream openUrlStream(String urlString) throws IOException {
         if (securityProperties.getWhitelist().stream().noneMatch(urlString::startsWith)) {
-            throw new DichotomyInvalidDataException(String.format("URL '%s' is not part of application's whitelist.", urlString));
+            StringJoiner sj = new StringJoiner(", ", "Whitelist: ", ".");
+            securityProperties.getWhitelist().forEach(sj::add);
+            throw new DichotomyInvalidDataException(String.format("URL '%s' is not part of application's whitelist. %s", urlString, sj));
         }
         URL url = new URL(urlString);
         return url.openStream(); // NOSONAR Usage of whitelist not triggered by Sonar quality assessment, even if listed as a solution to the vulnerability

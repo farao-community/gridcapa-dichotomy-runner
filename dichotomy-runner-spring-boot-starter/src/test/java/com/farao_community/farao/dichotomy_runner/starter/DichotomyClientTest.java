@@ -1,5 +1,8 @@
 /*
  * Copyright (c) 2021, RTE (http://www.rte-france.com)
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 package com.farao_community.farao.dichotomy_runner.starter;
 
@@ -35,8 +38,8 @@ class DichotomyClientTest {
 
         DichotomyResponse dichotomyResponse = client.runDichotomy(dichotomyRequest);
 
-        assertEquals(1000., dichotomyResponse.getHigherSecureStep().getStepValue(), EPSILON);
-        assertEquals(1500., dichotomyResponse.getLowerUnsecureStep().getStepValue(), EPSILON);
+        assertEquals(1000., dichotomyResponse.getHighestValidStep().getStepValue(), EPSILON);
+        assertEquals(1500., dichotomyResponse.getLowestInvalidStep().getStepValue(), EPSILON);
     }
 
     private DichotomyClientProperties buildProperties() {
